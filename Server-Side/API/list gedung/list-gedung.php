@@ -48,21 +48,23 @@ class ListGedung{
         $this->mulai_sewa = $row['mulai_sewa'];
         $this->selesai_sewa = $row['selesai_sewa'];
     }
+
     function create(){
         //query to insert record
         $query ="INSERT INTO 
                     " . $this->table_name . " 
                 SET 
-                    mulai_sewa=:mulai_sewa, selesai_sewa=:selesai_sewa";
+                    id_gedung=:id_gedung, mulai_sewa=:mulai_sewa, selesai_sewa=:selesai_sewa";
         //prepare query
         $stmt = $this->conn->prepare($query);
 
         //sanitize
+        $this->id_gedung=htmlspecialchars(strip_tags($this->id_gedung));
         $this->mulai_sewa=htmlspecialchars(strip_tags($this->mulai_sewa));
         $this->selesai_sewa=htmlspecialchars(strip_tags($this->selesai_sewa));
-        // var_dump($this->price);
 
         //bind values
+        $stmt->bindParam(":id_gedung", $this->id_gedung);
         $stmt->bindParam(":mulai_sewa", $this->mulai_sewa);
         $stmt->bindParam(":selesai_sewa", $this->selesai_sewa);
         // var_dump($stmt);

@@ -10,43 +10,35 @@
     include_once '../config/database.php';
 
     //instantiate product obejct
-    include_once 'gedung.php';
+    include_once 'list-gedung.php';
 
     $database = new Database();
     $db = $database->getConnect();
 
-    $gedung = new Gedung($db);
+    $listgedung = new ListGedung($db);
 
     //get posted data
     $data = json_decode(file_get_contents("php://input"));
 
     //make sure data empty
     if(
-        !empty($data->nama_gedung) &&
-        !empty($data->alamat_gedung) &&
-        !empty($data->harga_sewa_gedung) &&
-        !empty($data->luas_gedung) &&
-        !empty($data->daya_tampung) &&
-        !empty($data->kontak) &&
-        !empty($data->id_gedung)  
+        !empty($data->id_gedung) &&
+        !empty($data->mulai_sewa) &&
+        !empty($data->selesai_sewa)
     ){
         //set product property values
-        $gedung->nama_gedung = $data->nama_gedung;
-        $gedung->alamat_gedung = $data->alamat_gedung;
-        $gedung->harga_sewa_gedung = $data->harga_sewa_gedung;
-        $gedung->luas_gedung = $data->luas_gedung;
-        $gedung->daya_tampung = $data->daya_tampung;
-        $gedung->kontak = $data->kontak;
-        $gedung->id_gedung = $data->id_gedung;
+        $listgedung->id_gedung = $data->id_gedung;
+        $listgedung->mulai_sewa = $data->mulai_sewa;
+        $listgedung->selesai_sewa = $data->selesai_sewa;
 
         //create the product
 
-        if($gedung->update()){
+        if($listgedung->update()){
             //set response code = 201 created
             http_response_code(201);
 
             //tell the user
-            echo json_encode(array("message" => "Gedung was updated."));
+            echo json_encode(array("message" => "List Gedung was updated."));
         }
 
         //if unable to create the product, tell the user 
@@ -55,7 +47,7 @@
             http_response_code(503);
 
             //tell the user 
-            echo json_encode(array("message" => "Unable to update gedung."));
+            echo json_encode(array("message" => "Unable to update list gedung."));
         }
     }
     //tell the user data is incomplete
@@ -64,6 +56,5 @@
         http_response_code(400);
 
         //tell the user
-        echo json_encode(array("message" => "Unable update gedung. Data is incomplete"));
+        echo json_encode(array("message" => "Unable update list gedung. Data is incomplete"));
     }
-    ?>

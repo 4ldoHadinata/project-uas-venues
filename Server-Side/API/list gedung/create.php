@@ -22,10 +22,12 @@
 
     //make sure data empty
     if(
+        !empty($data->id_gedung) &&
         !empty($data->mulai_sewa) &&
         !empty($data->selesai_sewa)
     ){
         //set product property values
+        $listgedung->id_gedung = $data->id_gedung;
         $listgedung->mulai_sewa = $data->mulai_sewa;
         $listgedung->selesai_sewa = $data->selesai_sewa;
 
