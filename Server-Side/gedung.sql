@@ -2,10 +2,10 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 09, 2020 at 10:38 AM
+-- Host: localhost
+-- Generation Time: Apr 29, 2020 at 06:57 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- PHP Version: 7.3.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,6 +47,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `login_pengelola` (IN `usern` VARCHA
 SELECT id_pengelola FROM pengelola_gedung WHERE pengelola_gedung.nama_pengelola = usern AND pengelola_gedung.password_pengelola = md5(passdn);
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_admin` (IN `usern` VARCHAR(100), IN `passn` VARCHAR(32))  BEGIN
+  INSERT INTO admin(admin.username_admin, admin.password_admin) VALUES(usern,MD5(passn));
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `reg_pengelola` (IN `username` VARCHAR(50), IN `password` VARCHAR(32))  BEGIN
   INSERT INTO pengelola_gedung(nama_pengelola, password_pengelola) VALUES(username,MD5(password));
 END$$
@@ -73,9 +77,16 @@ DELIMITER ;
 
 CREATE TABLE `admin` (
   `id_admin` int(20) NOT NULL,
-  `username_admin` int(100) NOT NULL,
-  `password_admin` int(100) NOT NULL
+  `username_admin` varchar(100) NOT NULL,
+  `password_admin` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `username_admin`, `password_admin`) VALUES
+(1, 'admin', '0192023a7bbd73250516f069df18b500');
 
 -- --------------------------------------------------------
 
@@ -89,8 +100,18 @@ CREATE TABLE `detail_gedung` (
   `alamat_gedung` varchar(200) NOT NULL,
   `harga_sewa_gedung` int(20) NOT NULL,
   `luas_gedung` int(20) NOT NULL,
-  `daya_tampung` int(20) NOT NULL
+  `daya_tampung` int(20) NOT NULL,
+  `kontak` varchar(255) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_gedung`
+--
+
+INSERT INTO `detail_gedung` (`id_gedung`, `nama_gedung`, `alamat_gedung`, `harga_sewa_gedung`, `luas_gedung`, `daya_tampung`, `kontak`, `created`) VALUES
+(1, 'gedung nikah', 'malang kota', 10000000, 100, 1000, '', '2020-04-10 07:19:42'),
+(2, 'gedung kawin', 'merjosari', 1000000, 100, 2000, '', '2020-04-10 07:39:28');
 
 --
 -- Triggers `detail_gedung`
@@ -121,6 +142,14 @@ CREATE TABLE `list_gedung` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `list_gedung`
+--
+
+INSERT INTO `list_gedung` (`id_gedung`, `mulai_sewa`, `selesai_sewa`) VALUES
+(1, '2020-04-08 19:56:07', '2020-04-30 19:56:07'),
+(2, '2020-04-06 19:56:07', '2020-04-07 19:56:07');
+
+--
 -- Triggers `list_gedung`
 --
 DELIMITER $$
@@ -147,7 +176,9 @@ CREATE TABLE `pengelola_gedung` (
 INSERT INTO `pengelola_gedung` (`id_pengelola`, `nama_pengelola`, `password_pengelola`) VALUES
 (1, '0', '6'),
 (2, 'user1', '6ad14ba9986e3615423dfca256d04e3f'),
-(3, 'user1', '6ad14ba9986e3615423dfca256d04e3f');
+(3, 'user1', '6ad14ba9986e3615423dfca256d04e3f'),
+(5, 'bambang', '357c5eaefeda3bf103d525b58d3fef73'),
+(6, 'haru', 'aecab1503021d470bc5cde7ae0e87032');
 
 -- --------------------------------------------------------
 
@@ -168,7 +199,15 @@ CREATE TABLE `update_log` (
 
 INSERT INTO `update_log` (`aksi`, `id`, `new_value`, `waktu`) VALUES
 ('INS-detail', 0, 'malang geudng', '2020-03-10 17:13:38'),
-('DEL-detail', 0, 'malang geudng', '2020-03-10 17:54:23');
+('DEL-detail', 0, 'malang geudng', '2020-03-10 17:54:23'),
+('INS-detail', 0, 'gedung nikah', '2020-04-10 14:11:36'),
+('INS-detail', 2, 'gedung kawin', '2020-04-10 14:39:28'),
+('INS-list', 1, '2020-04-08 19:56:07', '2020-04-10 19:56:26'),
+('INS-list', 2, '2020-04-06 19:56:07', '2020-04-28 16:50:35'),
+('INS-detail', 3, 'gedung malang', '2020-04-28 17:00:33'),
+('UPD-detail', 3, 'gedung malang', '2020-04-28 17:04:06'),
+('UPD-detail', 3, 'gedung nikah malang', '2020-04-28 17:04:19'),
+('DEL-detail', 3, 'gedung nikah malang', '2020-04-28 17:04:57');
 
 --
 -- Indexes for dumped tables
@@ -203,20 +242,22 @@ ALTER TABLE `pengelola_gedung`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admin` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `detail_gedung`
+--
+ALTER TABLE `detail_gedung`
+  MODIFY `id_gedung` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `pengelola_gedung`
 --
 ALTER TABLE `pengelola_gedung`
-  MODIFY `id_pengelola` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `list_gedung`
---
-ALTER TABLE `list_gedung`
-  ADD CONSTRAINT `list_gedung_ibfk_1` FOREIGN KEY (`id_gedung`) REFERENCES `detail_gedung` (`id_gedung`);
+  MODIFY `id_pengelola` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

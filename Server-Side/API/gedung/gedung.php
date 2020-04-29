@@ -85,7 +85,7 @@ class Gedung{
         $this->luas_gedung=htmlspecialchars(strip_tags($this->luas_gedung));
         $this->daya_tampung=htmlspecialchars(strip_tags($this->daya_tampung));
         $this->kontak=htmlspecialchars(strip_tags($this->kontak));
-        $this->created=htmlspecialchars(strip_tags($this->created));
+        // $this->created=htmlspecialchars(strip_tags($this->created));
 
         // var_dump($this->price);
 
@@ -96,7 +96,7 @@ class Gedung{
         $stmt->bindParam(":luas_gedung", $this->luas_gedung);
         $stmt->bindParam(":daya_tampung", $this->daya_tampung);
         $stmt->bindParam(":kontak", $this->kontak);
-        $stmt->bindParam(":created", $this->created);
+        // $stmt->bindParam(":created", $this->created);
 
         // var_dump($stmt);
         //execute query
@@ -123,7 +123,7 @@ class Gedung{
         $this->luas_gedung=htmlspecialchars(strip_tags($this->luas_gedung));
         $this->daya_tampung=htmlspecialchars(strip_tags($this->daya_tampung));
         $this->kontak=htmlspecialchars(strip_tags($this->kontak));
-        $this->created=htmlspecialchars(strip_tags($this->created));
+        // $this->created=htmlspecialchars(strip_tags($this->created));
         $this->id_gedung=htmlspecialchars(strip_tags($this->id_gedung));
 
         // var_dump($this->price);
@@ -135,7 +135,7 @@ class Gedung{
         $stmt->bindParam(":luas_gedung", $this->luas_gedung);
         $stmt->bindParam(":daya_tampung", $this->daya_tampung);
         $stmt->bindParam(":kontak", $this->kontak);
-        $stmt->bindParam(":created", $this->created);
+        // $stmt->bindParam(":created", $this->created);
         $stmt->bindParam(":id_gedung", $this->id_gedung);
 
         // var_dump($stmt);
