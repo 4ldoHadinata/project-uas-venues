@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class UserDetailGedung extends AppCompatActivity {
     private DatabaseHelper db;
-    private EditText EditNamaGedung, EditAlamat, EditHarga, EditLuas, EditDayaTampung;
+    private TextView EditNamaGedung, EditAlamat, EditHarga, EditLuas, EditDayaTampung;
     private int id;
 
     @Override
@@ -21,11 +22,11 @@ public class UserDetailGedung extends AppCompatActivity {
         id = fromList.getIntExtra("id",0);
 
         db = new DatabaseHelper(this);
-        EditNamaGedung = (EditText) findViewById(R.id.EditNamaGedung);
-        EditAlamat = (EditText) findViewById(R.id.EditAlamat);
-        EditHarga = (EditText) findViewById(R.id.EditHarga);
-        EditLuas = (EditText) findViewById(R.id.EditLuas);
-        EditDayaTampung = (EditText) findViewById(R.id.EditDayaTampung);
+        EditNamaGedung = (TextView) findViewById(R.id.EditNamaGedung);
+        EditAlamat = (TextView) findViewById(R.id.EditAlamat);
+        EditHarga = (TextView) findViewById(R.id.EditHarga);
+        EditLuas = (TextView) findViewById(R.id.EditLuas);
+        EditDayaTampung = (TextView) findViewById(R.id.EditDayaTampung);
 
         loadDetailGedung();
     }
