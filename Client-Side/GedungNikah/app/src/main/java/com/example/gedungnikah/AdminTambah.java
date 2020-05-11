@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class AdminTambah extends AppCompatActivity {
 
     DatabaseHelper dbhelper;
-    EditText InputNamaGedung, InputAlamat, InputHarga, InputLuas, InputDayaTampung;
+    EditText InputNamaGedung, InputAlamat, InputHarga, InputLuas, InputDayaTampung, InputKontak;
     Button Tombol;
 
     @Override
@@ -27,7 +27,9 @@ public class AdminTambah extends AppCompatActivity {
         InputHarga = (EditText) findViewById(R.id.InputHarga);
         InputLuas = (EditText) findViewById(R.id.InputLuas);
         InputDayaTampung = (EditText) findViewById(R.id.InputDayaTampung);
+        InputKontak = (EditText) findViewById(R.id.InputKontak);
 
+        addAction();
     }
 
     public void addAction() {
@@ -35,19 +37,14 @@ public class AdminTambah extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean isInserted = dbhelper.insertData(InputNamaGedung.getText().toString(),
+                        Gedung gedung = Gedung.generateInsertObject(InputNamaGedung.getText().toString(),
                                 InputAlamat.getText().toString(),
                                 Integer.parseInt(InputHarga.getText().toString()),
                                 Integer.parseInt(InputLuas.getText().toString()),
-                                Integer.parseInt(InputDayaTampung.getText().toString()) );
-                        if(isInserted == true) {
-                            Toast.makeText(AdminTambah.this,
-                                    "Data Berhasil Ditambahkan",Toast.LENGTH_LONG).show(); }
-                        else {
-                            Toast.makeText(AdminTambah.this,
-                                    "Data Gagal Ditambahkan",Toast.LENGTH_LONG).show(); }
-//                        Intent pindah = new Intent(AdminTambah.this,AdminListGedung.class);
-//                        startActivity(pindah);
+                                Integer.parseInt(InputDayaTampung.getText().toString()),
+                                InputKontak.getText().toString()
+                        );
+                        new ApiConnect(AdminTambah.this,gedung).execute(ApiConnect.INSERT_ACTION+"");
                     }
                 }
         );
