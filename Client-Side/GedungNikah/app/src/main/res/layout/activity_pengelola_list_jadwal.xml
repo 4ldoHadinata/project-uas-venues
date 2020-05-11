@@ -6,25 +6,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
     tools:context=".PengelolaListJadwal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/border">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Venues"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Pengelola \n List Jadwal Gedung"
-        android:textSize="25dp"
+        android:text="Pengelola List Jadwal Gedung"
+        android:textSize="18sp"
         android:textAlignment="center"
         android:textColor="#000" />
 
-    <Button
-        android:id="@+id/btnTambahJadwal"
-        android:layout_width="150dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Tambah Jadwal"
-        android:textAllCaps="false"
-        android:layout_gravity="center" />
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mulai sewa"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="mulai sewa"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selesai sewa"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="selesai sewa"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/btnTambahJadwal"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Tambah Jadwal"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_rounded"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
 
 </LinearLayout>
