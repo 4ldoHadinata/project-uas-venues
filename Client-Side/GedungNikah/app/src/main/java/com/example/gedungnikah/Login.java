@@ -16,6 +16,12 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //default fragment
+        PengelolaFragment pengelolaFragment = new PengelolaFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, pengelolaFragment)
+                .commit();
+
         Tombol = (Button) findViewById(R.id.btnFragmentPengelola);
         Tombol2 = (Button) findViewById(R.id.btnFragmentAdmin);
         Tombol3 = (Button) findViewById(R.id.btnMoveUser);
@@ -23,16 +29,20 @@ public class Login extends AppCompatActivity {
         Tombol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pindah = new Intent(Login.this,Pengelola.class);
-                startActivity(pindah);
+                PengelolaFragment pengelolaFragment = new PengelolaFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, pengelolaFragment)
+                        .commit();
             }
         });
 
         Tombol2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pindah2 = new Intent(Login.this,AdminListGedung.class);
-                startActivity(pindah2);
+                AdminFragment adminFragment = new AdminFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, adminFragment)
+                        .commit();
             }
         });
 

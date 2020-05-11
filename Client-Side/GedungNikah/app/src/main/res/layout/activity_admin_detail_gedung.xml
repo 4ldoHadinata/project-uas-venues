@@ -6,115 +6,134 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
     tools:context=".AdminDetailGedung">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/border">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Venues"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Admin \nDetail Gedung"
-        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:text="Admin Detail Gedung"
+        android:textSize="18sp"
         android:textAlignment="center"
         android:textColor="#000" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
-        android:text="Nama Gedung"
-        android:textSize="17dp"
-        android:textColor="#000" />
-
-    <EditText
-        android:id="@+id/EditNamaGedung"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="15dp"
-        android:hint="Nama Gedung"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="50dp"
-        android:text="Alamat"
-        android:textSize="17dp"
-        android:textColor="#000" />
-
-    <EditText
-        android:id="@+id/EditAlamat"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="Alamat"
-        android:textSize="15dp"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="50dp"
-        android:text="Harga"
-        android:textSize="17dp"
-        android:textColor="#000" />
-
-    <EditText
-        android:id="@+id/EditHarga"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="Harga"
-        android:textSize="15dp"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="50dp"
-        android:text="Luas"
-        android:textSize="17dp"
-        android:textColor="#000" />
-
-    <EditText
-        android:id="@+id/EditLuas"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="Luas"
-        android:textSize="15dp"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="50dp"
-        android:text="Daya Tampung"
-        android:textSize="17dp"
-        android:textColor="#000" />
-
-    <EditText
-        android:id="@+id/EditDayaTampung"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="Daya Tampung"
-        android:textSize="15dp"
-        android:textAlignment="center" />
-
-    <Button
-        android:id="@+id/btnHapus"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginTop="20dp"
-        android:text="Hapus"
-        android:textAllCaps="false"
-        android:layout_gravity="center" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Gedung"
+            android:textSize="17dp"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/EditNamaGedung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="Nama Gedung"
+            android:textColor="@color/black"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:id="@+id/EditAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Harga"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:id="@+id/EditHarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Harga"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Luas"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:id="@+id/EditLuas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Luas"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daya Tampung"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:layout_marginTop="15sp"/>
+
+        <TextView
+            android:id="@+id/EditDayaTampung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daya Tampung"
+            android:textSize="15dp"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btnHapus"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Hapus"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_rounded"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
 
 </LinearLayout>
