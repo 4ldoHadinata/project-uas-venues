@@ -120,6 +120,24 @@
             android:textSize="15dp"
             android:textAlignment="center" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:text="Kontak"
+            android:textSize="17dp"
+            android:textColor="#000" />
+
+        <EditText
+            android:id="@+id/EditKontak"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Kontak"
+            android:textSize="15dp"
+            android:textAlignment="center" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
