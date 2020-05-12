@@ -21,26 +21,25 @@ $admin = new Admin($db);
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
-$admin->username_admin = isset($_GET['username_admin']) ? $_GET['username_admin'] : die();
-$admin->password_admin = isset($_GET['password_admin']) ? $_GET['password_admin'] : die();
+// $data->username_admin = isset($_GET['username_admin']) ? $_GET['username_admin'] : die();
+// $data->password_admin = isset($_GET['password_admin']) ? $_GET['password_admin'] : die();
 
 // set product property values
-$admin->username_admin = $admin->username_admin;
-$admin->password_admin = $admin->password_admin;
+$admin->username_admin = $data->username_admin;
+$admin->password_admin = $data->password_admin;
 
 $admin->login();
 
 if ($admin->id_admin != null) {
     // create array
-    $listadmin_arr = array(
-        "id_admin" =>  $admin->id_admin
-    );
+    $listadmin_arr = array();
 
     // set response code - 200 OK
     http_response_code(200);
 
     // make it json format
-    echo json_encode($listadmin_arr);
+    array_push($listadmin_arr, array('id_admin' => $admin->id_admin));
+    echo json_encode(array("result" => $listadmin_arr));
 } else {
     // set response code - 404 Not found
     http_response_code(404);
