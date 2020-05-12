@@ -2,7 +2,9 @@ package com.example.gedungnikah;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -43,6 +45,11 @@ public class AdminListGedung extends AppCompatActivity implements GedungAdapter.
         Tombol2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences("cekLogin", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("status", 0);
+                editor.apply();
+
                 Intent pindah = new Intent(AdminListGedung.this,Login.class);
                 startActivity(pindah);
             }

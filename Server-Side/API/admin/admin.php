@@ -65,7 +65,7 @@ class Admin
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // set values to object properties
-        $this->id_admin = $row['id_admin'];
+        $this->id_admin = $row['id_admin'] ?? 0;
         // $this->password_pengelola = $row['password_pengelola'];
     }
 }

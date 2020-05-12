@@ -21,9 +21,12 @@ $admin = new Admin($db);
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
+$admin->username_admin = isset($_GET['username_admin']) ? $_GET['username_admin'] : die();
+$admin->password_admin = isset($_GET['password_admin']) ? $_GET['password_admin'] : die();
+
 // set product property values
-$admin->username_admin = $data->username_admin;
-$admin->password_admin = $data->password_admin;
+$admin->username_admin = $admin->username_admin;
+$admin->password_admin = $admin->password_admin;
 
 $admin->login();
 
