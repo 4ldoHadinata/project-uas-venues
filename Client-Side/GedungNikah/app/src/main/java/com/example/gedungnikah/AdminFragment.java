@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,19 +56,26 @@ public class AdminFragment extends Fragment {
     }
 
     private void login(String username, String password){
-        AndroidNetworking.post("http://10.39.8.93/project-uas-venues/Server-Side/API/admin/login.php")
-                .addBodyParameter("username_admin", username)
-                .addBodyParameter("password_admin", password)
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username_admin", username);
+            jsonObject.put("password_admin", password);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        AndroidNetworking.post("http://192.168.43.18/project-uas-venues/Server-Side/API/admin/login.php")
+                .addJSONObjectBody(jsonObject)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+
                         try {
-                            JSONArray jsonArray = response.getJSONArray("listadmin_arr");
+                            JSONArray jsonArray = response.getJSONArray("result");
                             for (int i=0; i<=jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                status = jsonObject.optInt("id_gedung");
+                                status = jsonObject.optInt("id_admin");
 
                                 if (status != 0) {
                                     Context context = getActivity();
@@ -88,7 +96,7 @@ public class AdminFragment extends Fragment {
                     @Override
                     public void onError(ANError error) {
                         // handle error
-                        Toast.makeText(getActivity(),""+error,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),""+error.getErrorDetail(),Toast.LENGTH_SHORT).show();
                     }
                 });
     }
