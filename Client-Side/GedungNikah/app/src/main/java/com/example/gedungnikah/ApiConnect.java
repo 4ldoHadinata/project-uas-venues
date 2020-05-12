@@ -70,7 +70,7 @@ public class ApiConnect extends AsyncTask<String,String,String> {
             return "gedung is null";
         }
         try{
-            URL url = new URL("http://10.0.2.2/project-uas-venues/Server-Side/API/gedung/create.php");
+            URL url = new URL("http://10.39.8.93/project-uas-venues/Server-Side/API/gedung/create.php");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type","application/json; utf-8");
@@ -101,7 +101,7 @@ public class ApiConnect extends AsyncTask<String,String,String> {
             return "gedung is null";
         }
         try{
-            URL url = new URL("http://10.0.2.2/project-uas-venues/Server-Side/API/gedung/update.php");
+            URL url = new URL("http://10.39.8.93/project-uas-venues/Server-Side/API/gedung/update.php");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -133,7 +133,7 @@ public class ApiConnect extends AsyncTask<String,String,String> {
             return "gedung is null";
         }
         try{
-            URL url = new URL("http://10.0.2.2/project-uas-venues/Server-Side/API/gedung/delete.php");
+            URL url = new URL("http://10.39.8.93/project-uas-venues/Server-Side/API/gedung/delete.php");
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -194,7 +194,7 @@ public class ApiConnect extends AsyncTask<String,String,String> {
         HttpURLConnection connection = null;
         BufferedReader reader = null;
         try {
-            URL url = new URL("http://10.0.2.2/project-uas-venues/Server-Side/API/gedung/read.php");
+            URL url = new URL("http://10.39.8.93/project-uas-venues/Server-Side/API/gedung/read.php");
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
             InputStream stream = connection.getInputStream();

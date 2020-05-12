@@ -3,7 +3,9 @@ package com.example.gedungnikah;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -21,12 +23,20 @@ public class UserListGedung extends AppCompatActivity implements GedungAdapter.c
     private List<Gedung> gedungs;
     private GedungAdapter gedungAdapter;
     private SwipeRefreshLayout swipeRefresh;
+    private int status;
     Button Tombol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list_gedung);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("cekLogin", Context.MODE_PRIVATE);
+        status = sharedPreferences.getInt("status",0);
+        if (status != 0) {
+            Intent pindah = new Intent(UserListGedung.this, AdminListGedung.class);
+            startActivity(pindah);
+        }
 
         db = new DatabaseHelper(this);
         gedungs = new ArrayList<>();
