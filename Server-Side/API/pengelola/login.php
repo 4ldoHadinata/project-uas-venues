@@ -1,6 +1,5 @@
 <?php
 // required headers
-header("Access-Control-Allow-Origin: http://localhost/project-uas/API/");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
@@ -30,15 +29,14 @@ $pengelola->login();
 
 if ($pengelola->id_pengelola != null) {
     // create array
-    $listpengelola_arr = array(
-        "id_pengelola" =>  $pengelola->id_pengelola
-    );
+    $listpengelola_arr = array();
 
     // set response code - 200 OK
     http_response_code(200);
 
     // make it json format
-    echo json_encode($listpengelola_arr);
+    array_push($listpengelola_arr, array('id_pengelola' => $pengelola->id_pengelola));
+    echo json_encode(array("result" => $listpengelola_arr));
 } else {
     // set response code - 404 Not found
     http_response_code(404);
